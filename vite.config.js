@@ -8,4 +8,7 @@ export default defineConfig({
       routes: "/src/routes",
     },
   },
+  server: {
+    port: 3000,
+  },
 });
