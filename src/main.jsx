@@ -6,7 +6,7 @@ import About from "routes/About";
 import Intro from "routes/Intro";
 import Portfolio from "routes/Portfolio";
 import Contact from "routes/Contact";
-import { loader as rootLoader } from "components/Navbar";
+import { loader as rootLoader, action as rootAction } from "components/Sidebar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./main.css";
 
@@ -15,7 +15,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <Error />,
-    loader: rootLoader,
     children: [
       {
         path: "/about",
@@ -32,6 +31,8 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+        loader: rootLoader,
+        action: rootAction,
       },
     ],
   },

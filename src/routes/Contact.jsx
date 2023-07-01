@@ -3,13 +3,52 @@ import PropTypes from "prop-types";
 import { Form } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
-const getContacts = () => {
-  return [
-    {
-      first: "Nicholas",
-      last: "Branch",
-    },
-  ];
+const mockContacts = [
+  {
+    id: 1,
+    first: "John",
+    last: "Doe",
+    linkedin: "johndoe",
+    avatar: "https://example.com/avatar.jpg",
+    notes: "This is a note about John Doe.",
+    favorite: false,
+  },
+  {
+    id: 2,
+    first: "Jane",
+    last: "Doe",
+    linkedin: "janedoe",
+    avatar: "https://example.com/avatar2.jpg",
+    notes: "This is a note about Jane Doe.",
+    favorite: true,
+  },
+  // Add more contacts as needed
+];
+
+const getContacts = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ result: mockContacts });
+    });
+  });
+};
+
+const createContact = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const newContact = {
+        id: mockContacts.length + 1,
+        first: "New",
+        last: "Contact",
+        linkedin: "newcontact",
+        avatar: null,
+        notes: null,
+        favorite: false,
+      };
+      mockContacts.push(newContact);
+      resolve(newContact);
+    });
+  });
 };
 
 const contact = {
@@ -61,9 +100,12 @@ const Contact = () => {
 
           {contact.notes && <p className="mb-4">{contact.notes}</p>}
 
-          <div className="space-x-2">
+          <div className="flex space-x-2">
             <Form action="edit">
-              <button className="btn-primary" type="submit">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                type="submit"
+              >
                 Edit
               </button>
             </Form>
@@ -80,7 +122,10 @@ const Contact = () => {
                 }
               }}
             >
-              <button className="btn-danger" type="submit">
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                type="submit"
+              >
                 Delete
               </button>
             </Form>
@@ -132,4 +177,4 @@ Favorite.propTypes = {
   }).isRequired,
 };
 
-export { Contact as default, Favorite, getContacts };
+export { Contact as default, Favorite, getContacts, createContact };
