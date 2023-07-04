@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Form } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 import Sidebar from "components/Sidebar";
 import Button from "components/Button";
 import { getContacts, createContact } from "../contacts";
+import { getContact } from "../contacts";
 
-const action = async () => {
+export const action = async () => {
   const contact = await createContact();
   return { contact };
 };
 
-const loader = async () => {
+export const loader = async () => {
   console.log("Loading contacts...");
   const contacts = await getContacts();
   return { contacts };
+};
+
+export const contactLoader = async ({ params }) => {
+  const contact = await getContact(params.contactId);
+  return { contact };
 };
 
 const contact = {
@@ -26,6 +32,7 @@ const contact = {
 };
 
 const Contact = () => {
+  const { contact } = useLoaderData();
   return (
     <div className="flex flex-grow">
       <Sidebar />
@@ -33,16 +40,16 @@ const Contact = () => {
         <div>
           <img
             className="w-32 h-32 rounded-full mb-4"
-            src={contact.avatar || null}
+            src={contact?.avatar || null}
             alt="Contact Avatar"
           />
         </div>
 
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">
-            {contact.first || contact.last ? (
+            {contact?.first || contact?.last ? (
               <>
-                {contact.first} {contact.last}
+                {contact?.first} {contact?.last}
               </>
             ) : (
               <i>No Name</i>
@@ -50,20 +57,20 @@ const Contact = () => {
             <Favorite contact={contact} />
           </h1>
 
-          {contact.linkedin && (
+          {contact?.linkedin && (
             <p>
               <a
                 className="text-blue-500"
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://www.linkedin.com/in/${contact.linkedin}`}
+                href={`https://www.linkedin.com/in/${contact?.linkedin}`}
               >
-                @{contact.linkedin}
+                @{contact?.linkedin}
               </a>
             </p>
           )}
 
-          {contact.notes && <p className="mb-4">{contact.notes}</p>}
+          {contact?.notes && <p className="mb-4">{contact?.notes}</p>}
 
           <div className="flex justify-center space-x-2">
             <Form action="edit">
@@ -94,7 +101,7 @@ const Contact = () => {
 };
 
 const Favorite = ({ contact }) => {
-  const [favorite, setFavorite] = useState(contact.favorite);
+  const [favorite, setFavorite] = useState(contact?.favorite);
 
   const toggleFavorite = () => {
     setFavorite((prevFavorite) => !prevFavorite);
@@ -134,4 +141,4 @@ Favorite.propTypes = {
   }).isRequired,
 };
 
-export { Contact as default, Favorite, loader, action };
+export { Contact as default, Favorite };

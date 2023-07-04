@@ -27,7 +27,7 @@ const Sidebar = () => {
           <Form method="post">
             <Button type="submit">New</Button>
           </Form>
-          {contacts.length ? (
+          {contacts?.length ? (
             <ul>
               {contacts.map((contact) => (
                 <li key={contact.id} className="mb-2">

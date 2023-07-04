@@ -8,6 +8,7 @@ import Portfolio from "routes/Portfolio";
 import Contact, {
   loader as rootLoader,
   action as rootAction,
+  contactLoader,
 } from "routes/Contact";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./main.css";
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "contacts/:id",
         element: <Contact />,
-        loader: rootLoader,
+        loader: contactLoader,
         action: rootAction,
       },
     ],
