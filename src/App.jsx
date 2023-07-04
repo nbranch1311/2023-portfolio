@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow">
-        <div id="detail">
+      <main className="flex flex-grow">
+        <div className="flex flex-grow" id="detail">
           <Outlet />
         </div>
       </main>

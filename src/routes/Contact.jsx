@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Form } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "components/Sidebar";
+import Button from "components/Button";
 
 const mockContacts = [
-  {
-    id: 1,
-    first: "John",
-    last: "Doe",
-    linkedin: "johndoe",
-    avatar: "https://example.com/avatar.jpg",
-    notes: "This is a note about John Doe.",
-    favorite: false,
-  },
-  {
-    id: 2,
-    first: "Jane",
-    last: "Doe",
-    linkedin: "janedoe",
-    avatar: "https://example.com/avatar2.jpg",
-    notes: "This is a note about Jane Doe.",
-    favorite: true,
-  },
+  //   {
+  //     id: 1,
+  //     first: "John",
+  //     last: "Doe",
+  //     linkedin: "johndoe",
+  //     avatar: "https://example.com/avatar.jpg",
+  //     notes: "This is a note about John Doe.",
+  //     favorite: false,
+  //   },
+  //   {
+  //     id: 2,
+  //     first: "Jane",
+  //     last: "Doe",
+  //     linkedin: "janedoe",
+  //     avatar: "https://example.com/avatar2.jpg",
+  //     notes: "This is a note about Jane Doe.",
+  //     favorite: true,
+  //   },
   // Add more contacts as needed
 ];
 
@@ -62,9 +63,9 @@ const contact = {
 
 const Contact = () => {
   return (
-    <div className="flex">
+    <div className="flex flex-grow">
       <Sidebar />
-      <div className="flex flex-col items-center mt-10 ml-10">
+      <div className="flex flex-col items-center mt-10 ml-10 w-full">
         <div>
           <img
             className="w-32 h-32 rounded-full mb-4"
@@ -100,14 +101,9 @@ const Contact = () => {
 
           {contact.notes && <p className="mb-4">{contact.notes}</p>}
 
-          <div className="flex space-x-2">
+          <div className="flex justify-center space-x-2">
             <Form action="edit">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                type="submit"
-              >
-                Edit
-              </button>
+              <Button type="submit">Edit</Button>
             </Form>
             <Form
               method="post"
@@ -122,12 +118,9 @@ const Contact = () => {
                 }
               }}
             >
-              <button
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                type="submit"
-              >
+              <Button variant="danger" type="submit">
                 Delete
-              </button>
+              </Button>
             </Form>
           </div>
         </div>

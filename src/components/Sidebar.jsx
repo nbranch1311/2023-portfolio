@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, useLoaderData, Link } from "react-router-dom";
 import { getContacts, createContact } from "../routes/Contact";
+import Button from "./Button";
 
 const action = async () => {
   const contact = await createContact();
@@ -17,7 +18,7 @@ const Sidebar = () => {
 
   return (
     <aside className="w-64 bg-gray-800 text-white flex-none">
-      <div className="flex flex-col h-screen p-4">
+      <div className="flex flex-col p-4">
         <div className="mb-8">
           <h1 className="text-2xl font-bold">React Sidebar</h1>
         </div>
@@ -35,12 +36,7 @@ const Sidebar = () => {
             <div className="sr-only" aria-live="polite"></div>
           </form>
           <Form method="post">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
-              type="submit"
-            >
-              New
-            </button>
+            <Button type="submit">New</Button>
           </Form>
           {contacts.length ? (
             <ul>
