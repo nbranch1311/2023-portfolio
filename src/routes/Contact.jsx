@@ -5,63 +5,11 @@ import Sidebar from "components/Sidebar";
 import Button from "components/Button";
 import { getContacts, createContact } from "../contacts";
 
-// eslint-disable-next-line no-unused-vars
-const mockContacts = [
-  //   {
-  //     id: 1,
-  //     first: "John",
-  //     last: "Doe",
-  //     linkedin: "johndoe",
-  //     avatar: "https://example.com/avatar.jpg",
-  //     notes: "This is a note about John Doe.",
-  //     favorite: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     first: "Jane",
-  //     last: "Doe",
-  //     linkedin: "janedoe",
-  //     avatar: "https://example.com/avatar2.jpg",
-  //     notes: "This is a note about Jane Doe.",
-  //     favorite: true,
-  //   },
-  // Add more contacts as needed
-];
-
-// const getContacts = async () => {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve({ result: mockContacts });
-//     });
-//   });
-// };
-
-// const createContact = async () => {
-//   return new Promise((resolve) => {
-//     console.log("Creating contact...");
-//     setTimeout(() => {
-//       const newContact = {
-//         id: mockContacts.length + 1,
-//         first: "New",
-//         last: "Contact",
-//         linkedin: "newcontact",
-//         avatar: null,
-//         notes: null,
-//         favorite: false,
-//       };
-//       mockContacts.push(newContact);
-//       resolve(newContact);
-//     });
-//   });
-// };
-
-// This doesnt need to live here and probably shouldnt
 const action = async () => {
   const contact = await createContact();
   return { contact };
 };
 
-// This doesnt need to live here and probably shouldnt
 const loader = async () => {
   console.log("Loading contacts...");
   const contacts = await getContacts();
