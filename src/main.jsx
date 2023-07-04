@@ -5,8 +5,10 @@ import Error from "routes/Error";
 import About from "routes/About";
 import Intro from "routes/Intro";
 import Portfolio from "routes/Portfolio";
-import Contact from "routes/Contact";
-import { loader as rootLoader, action as rootAction } from "components/Sidebar";
+import Contact, {
+  loader as rootLoader,
+  action as rootAction,
+} from "routes/Contact";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./main.css";
 
@@ -17,19 +19,25 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: "/about",
+        path: "about",
         element: <About />,
       },
       {
-        path: "/intro",
+        path: "intro",
         element: <Intro />,
       },
       {
-        path: "/portfolio",
+        path: "portfolio",
         element: <Portfolio />,
       },
       {
-        path: "/contact",
+        path: "contacts",
+        element: <Contact />,
+        loader: rootLoader,
+        action: rootAction,
+      },
+      {
+        path: "contacts/:id",
         element: <Contact />,
         loader: rootLoader,
         action: rootAction,

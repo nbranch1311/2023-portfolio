@@ -1,17 +1,6 @@
 import React from "react";
 import { Form, useLoaderData, Link } from "react-router-dom";
-import { getContacts, createContact } from "../routes/Contact";
 import Button from "./Button";
-
-const action = async () => {
-  const contact = await createContact();
-  return { contact };
-};
-
-const loader = async () => {
-  const contacts = (await getContacts())?.result ?? [];
-  return { contacts };
-};
 
 const Sidebar = () => {
   const { contacts } = useLoaderData();
@@ -42,7 +31,7 @@ const Sidebar = () => {
             <ul>
               {contacts.map((contact) => (
                 <li key={contact.id} className="mb-2">
-                  <Link to={`contact/${contact.id}`} className="text-white">
+                  <Link to={`/contacts/${contact.id}`} className="text-white">
                     {contact.first || contact.last ? (
                       <>
                         {contact.first} {contact.last}
@@ -68,4 +57,4 @@ const Sidebar = () => {
   );
 };
 
-export { Sidebar as default, loader, action };
+export { Sidebar as default };
