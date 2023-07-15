@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, useLoaderData, Link } from 'react-router-dom';
+import { Form, Link, useLoaderData } from 'react-router-dom';
 import Button from './Button';
 
 const Sidebar = () => {

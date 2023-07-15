@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Form, useLoaderData } from 'react-router-dom';
 import Sidebar from 'components/Sidebar';
 import Button from 'components/Button';
-import { getContacts, createContact } from '../contacts';
-import { getContact } from '../contacts';
+import { createContact, getContacts } from '../helper/contacts';
+import { getContact } from '../helper/contacts';
 
 export const action = async () => {
   const contact = await createContact();
@@ -36,63 +36,77 @@ const Contact = () => {
   return (
     <div className="flex flex-grow">
       <Sidebar />
-      <div className="flex flex-col items-center mt-10 ml-10 w-full">
-        <div>
-          <img
-            className="w-32 h-32 rounded-full mb-4"
-            src={contact?.avatar || null}
-            alt="Contact Avatar"
-          />
-        </div>
-
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-2">
-            {contact?.first || contact?.last ? (
-              <>
-                {contact?.first} {contact?.last}
-              </>
+      <div className="flex flex-col mt-10 ml-10 w-full">
+        <div className="flex">
+          <div
+            className={`w-32 h-32 rounded-md mr-4 ${
+              contact?.avatar ? '' : 'bg-gray-200'
+            }`}
+          >
+            {contact?.avatar ? (
+              <img
+                className="w-full h-full object-cover object-center rounded-md"
+                src={contact?.avatar}
+                alt="Contact Avatar"
+              />
             ) : (
-              <i>No Name</i>
-            )}{' '}
-            <Favorite contact={contact} />
-          </h1>
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-light-gray-400">No Avatar</span>
+              </div>
+            )}
+          </div>
 
-          {contact?.linkedin && (
-            <p>
-              <a
-                className="text-blue-500"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://www.linkedin.com/in/${contact?.linkedin}`}
+          <div className="text-center flex flex-col justify-center">
+            <div className="flex items-center mb-4">
+              <h1 className="text-2xl font-bold me-3">
+                {contact?.first || contact?.last ? (
+                  <>
+                    {contact?.first} {contact?.last}
+                  </>
+                ) : (
+                  <i>No Name</i>
+                )}
+              </h1>
+              <Favorite contact={contact} />
+            </div>
+
+            {contact?.linkedin && (
+              <p>
+                <a
+                  className="text-blue-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://www.linkedin.com/in/${contact?.linkedin}`}
+                >
+                  @{contact?.linkedin}
+                </a>
+              </p>
+            )}
+
+            {contact?.notes && <p className="mb-4">{contact?.notes}</p>}
+
+            <div className="flex justify-center space-x-2">
+              <Form action="edit">
+                <Button type="submit">Edit</Button>
+              </Form>
+              <Form
+                method="post"
+                action="destroy"
+                onSubmit={(event) => {
+                  if (
+                    !window.confirm(
+                      'Please confirm you want to delete this record.',
+                    )
+                  ) {
+                    event.preventDefault();
+                  }
+                }}
               >
-                @{contact?.linkedin}
-              </a>
-            </p>
-          )}
-
-          {contact?.notes && <p className="mb-4">{contact?.notes}</p>}
-
-          <div className="flex justify-center space-x-2">
-            <Form action="edit">
-              <Button type="submit">Edit</Button>
-            </Form>
-            <Form
-              method="post"
-              action="destroy"
-              onSubmit={(event) => {
-                if (
-                  !window.confirm(
-                    'Please confirm you want to delete this record.',
-                  )
-                ) {
-                  event.preventDefault();
-                }
-              }}
-            >
-              <Button variant="danger" type="submit">
-                Delete
-              </Button>
-            </Form>
+                <Button variant="danger" type="submit">
+                  Delete
+                </Button>
+              </Form>
+            </div>
           </div>
         </div>
       </div>

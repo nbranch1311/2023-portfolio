@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const variantStyles = {
-  primary: 'bg-blue-500 hover:bg-blue-700 text-white',
-  secondary: 'bg-gray-500 hover:bg-gray-700 text-white',
-  danger: 'bg-red-500 hover:bg-red-700 text-white',
+  primary: 'bg-white text-blue-500 hover:bg-blue-100 border border-gray-200',
+  secondary: 'bg-white text-gray-500 hover:bg-gray-100 border border-gray-200',
+  danger: 'bg-red-600 text-white hover:bg-red-700',
 };
 
 const Button = ({
@@ -18,9 +18,9 @@ const Button = ({
 
   return (
     <button
-      className={`font-bold py-2 px-4 rounded mb-4 ${buttonStyle} ${
+      className={`py-2 px-4 rounded mb-4 ${buttonStyle} ${
         disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-      } shadow-md`}
+      } shadow-lg`}
       onClick={onClick}
       type={type}
       disabled={disabled}

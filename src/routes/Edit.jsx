@@ -1,55 +1,62 @@
+import React from 'react';
 import { Form, useLoaderData } from 'react-router-dom';
+import Sidebar from 'components/Sidebar';
+import Button from 'components/Button';
+import TextField from 'components/TextField';
+import TextArea from 'components/TextArea';
 
 const EditContact = () => {
   const { contact } = useLoaderData();
+  console.log(contact);
 
   return (
-    <Form method="post" id="contact-form">
-      <p>
-        <span>Name</span>
-        <input
-          placeholder="First"
-          aria-label="First name"
-          type="text"
-          name="first"
-          defaultValue={contact.first}
-        />
-        <input
-          placeholder="Last"
-          aria-label="Last name"
-          type="text"
-          name="last"
-          defaultValue={contact.last}
-        />
-      </p>
-      <label>
-        <span>Twitter</span>
-        <input
-          type="text"
-          name="twitter"
-          placeholder="@jack"
-          defaultValue={contact.twitter}
-        />
-      </label>
-      <label>
-        <span>Avatar URL</span>
-        <input
-          placeholder="https://example.com/avatar.jpg"
-          aria-label="Avatar URL"
-          type="text"
-          name="avatar"
-          defaultValue={contact.avatar}
-        />
-      </label>
-      <label>
-        <span>Notes</span>
-        <textarea name="notes" defaultValue={contact.notes} rows={6} />
-      </label>
-      <p>
-        <button type="submit">Save</button>
-        <button type="button">Cancel</button>
-      </p>
-    </Form>
+    <div className="flex flex-grow">
+      <Sidebar />
+      <div className="flex flex-grow p-4">
+        <Form method="post" id="contact-form" className="max-w-3xl">
+          <div className="flex flex-grow flex-col">
+            <label className="block font-semibold mb-2">Name</label>
+            <div className="flex flex-grow gap-4">
+              <TextField
+                disabled
+                placeholder="First"
+                name="first"
+                defaultValue={contact?.first}
+              />
+              <TextField
+                placeholder="Last"
+                name="last"
+                defaultValue={contact?.last}
+              />
+            </div>
+          </div>
+          <div className="flex flex-grow flex-col">
+            <TextField
+              label="Twitter"
+              placeholder="@username"
+              name="twitter"
+              defaultValue={contact?.twitter}
+            />
+            <TextField
+              label="Avatar URL"
+              placeholder="https://example.com/avatar.jpg"
+              name="avatar"
+              defaultValue={contact?.avatar}
+            />
+          </div>
+          <TextArea
+            label="Notes"
+            name="notes"
+            defaultValue={contact?.notes}
+            rows={6}
+          />
+          <div className="flex gap-2">
+            <Button type="submit">Save</Button>
+            <Button variant="secondary">Cancel</Button>
+          </div>
+        </Form>
+      </div>
+    </div>
   );
 };
 

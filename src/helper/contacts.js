@@ -18,7 +18,7 @@ export const createContact = async () => {
   const contact = { id, createdAt: Date.now() };
   let contacts = await getContacts();
   contacts.unshift(contact);
-  await set(contacts);
+  await setContact(contacts);
   return contact;
 };
 
@@ -35,7 +35,7 @@ export const updateContact = async (id, updates) => {
   const contact = contacts.find((contact) => contact.id === id);
   if (!contact) throw new Error(`No contact found for ${id}`);
   Object.assign(contact, updates);
-  await set(contacts);
+  await setContact(contacts);
   return contact;
 };
 
@@ -44,13 +44,13 @@ export const deleteContact = async (id) => {
   const index = contacts.findIndex((contact) => contact.id === id);
   if (index > -1) {
     contacts.splice(index, 1);
-    await set(contacts);
+    await setContact(contacts);
     return true;
   }
   return false;
 };
 
-const set = async (contacts) => {
+const setContact = async (contacts) => {
   return localforage.setItem('contacts', contacts);
 };
 
