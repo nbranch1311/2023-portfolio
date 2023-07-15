@@ -1,11 +1,11 @@
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [],
   resolve: {
     alias: {
-      components: "/src/components",
-      routes: "/src/routes",
+      components: '/src/components',
+      routes: '/src/routes',
     },
   },
   server: {

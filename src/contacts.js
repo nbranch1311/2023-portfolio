@@ -1,15 +1,15 @@
-import localforage from "localforage";
-import { matchSorter } from "match-sorter";
-import sortBy from "sort-by";
+import localforage from 'localforage';
+import { matchSorter } from 'match-sorter';
+import sortBy from 'sort-by';
 
 export const getContacts = async (query) => {
   await fakeNetwork(`getContacts:${query}`);
-  let contacts = await localforage.getItem("contacts");
+  let contacts = await localforage.getItem('contacts');
   contacts = contacts || [];
   if (query) {
-    contacts = matchSorter(contacts, query, { keys: ["first", "last"] });
+    contacts = matchSorter(contacts, query, { keys: ['first', 'last'] });
   }
-  return contacts.sort(sortBy("last", "createdAt"));
+  return contacts.sort(sortBy('last', 'createdAt'));
 };
 
 export const createContact = async () => {
@@ -24,14 +24,14 @@ export const createContact = async () => {
 
 export const getContact = async (id) => {
   await fakeNetwork(`contact:${id}`);
-  const contacts = await localforage.getItem("contacts");
+  const contacts = await localforage.getItem('contacts');
   const contact = contacts.find((contact) => contact.id === id);
   return contact ?? null;
 };
 
 export const updateContact = async (id, updates) => {
   await fakeNetwork();
-  let contacts = await localforage.getItem("contacts");
+  let contacts = await localforage.getItem('contacts');
   const contact = contacts.find((contact) => contact.id === id);
   if (!contact) throw new Error(`No contact found for ${id}`);
   Object.assign(contact, updates);
@@ -40,7 +40,7 @@ export const updateContact = async (id, updates) => {
 };
 
 export const deleteContact = async (id) => {
-  let contacts = await localforage.getItem("contacts");
+  let contacts = await localforage.getItem('contacts');
   const index = contacts.findIndex((contact) => contact.id === id);
   if (index > -1) {
     contacts.splice(index, 1);
@@ -51,7 +51,7 @@ export const deleteContact = async (id) => {
 };
 
 const set = async (contacts) => {
-  return localforage.setItem("contacts", contacts);
+  return localforage.setItem('contacts', contacts);
 };
 
 let fakeCache = {};
