@@ -5,21 +5,32 @@ module.exports = {
     es2020: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
   ],
+  plugins: ['prettier'],
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   settings: {
     react: {
-      version: "detect",
+      version: 'detect',
     },
   },
   rules: {
-    "no-unused-vars": ["error", { varsIgnorePattern: "React" }],
+    'prettier/prettier': 'error',
+    'no-unused-vars': ['error', { varsIgnorePattern: 'React' }],
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+        memberSyntaxSortOrder: ['all', 'single', 'multiple', 'none'],
+      },
+    ],
   },
 };

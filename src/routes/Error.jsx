@@ -1,5 +1,5 @@
-import React from "react";
-import { useRouteError } from "react-router-dom";
+import React from 'react';
+import { useRouteError } from 'react-router-dom';
 
 const Error = () => {
   const error = useRouteError();
@@ -12,7 +12,7 @@ const Error = () => {
         Sorry, an unexpected error has occurred.
       </p>
       <p className="text-center">
-        <i>{error.statusText || error.message}</i>
+        <i>{error.data || error.statusText || error.message}</i>
       </p>
     </div>
   );
