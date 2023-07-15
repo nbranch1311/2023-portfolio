@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import Error from 'routes/Error';
-import About from 'routes/About';
-import Intro from 'routes/Intro';
-import Portfolio from 'routes/Portfolio';
-import Contact, {
-  loader as rootLoader,
-  action as rootAction,
+import {
+  About,
+  Contact,
   contactLoader,
-} from 'routes/Contact';
+  Error,
+  Intro,
+  Portfolio,
+  rootAction,
+  rootLoader,
+} from 'routes';
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './main.css';
 
