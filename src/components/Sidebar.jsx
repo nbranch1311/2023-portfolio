@@ -1,6 +1,6 @@
-import React from "react";
-import { Form, useLoaderData, Link } from "react-router-dom";
-import Button from "./Button";
+import React from 'react';
+import { Form, useLoaderData, Link } from 'react-router-dom';
+import Button from './Button';
 
 const Sidebar = () => {
   const { contacts } = useLoaderData();
@@ -38,7 +38,7 @@ const Sidebar = () => {
                       </>
                     ) : (
                       <i>No Name</i>
-                    )}{" "}
+                    )}{' '}
                     {contact.favorite && (
                       <span className="text-yellow-400">★</span>
                     )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Portfolio = () => <h1>This is the Portfolio Page</h1>;
 
