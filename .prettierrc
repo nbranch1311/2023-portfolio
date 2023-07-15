@@ -1,0 +1,19 @@
+{
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "overrides": [
+    {
+      "files": "*.js",
+      "options": {
+        "parser": "babel",
+        "plugins": [
+          ["sort-imports-es6-autofix", { "ignoreCase": true }],
+          ["sort-keys-fix", "asc", { "caseSensitive": false }]
+        ]
+      }
+    }
+  ]
+}

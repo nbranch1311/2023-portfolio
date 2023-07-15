@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Form, useLoaderData } from "react-router-dom";
-import Sidebar from "components/Sidebar";
-import Button from "components/Button";
-import { getContacts, createContact } from "../contacts";
-import { getContact } from "../contacts";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Form, useLoaderData } from 'react-router-dom';
+import Sidebar from 'components/Sidebar';
+import Button from 'components/Button';
+import { getContacts, createContact } from '../contacts';
+import { getContact } from '../contacts';
 
 export const action = async () => {
   const contact = await createContact();
@@ -12,7 +12,7 @@ export const action = async () => {
 };
 
 export const loader = async () => {
-  console.log("Loading contacts...");
+  console.log('Loading contacts...');
   const contacts = await getContacts();
   return { contacts };
 };
@@ -22,14 +22,14 @@ export const contactLoader = async ({ params }) => {
   return { contact };
 };
 
-const contact = {
-  first: "Nicholas",
-  last: "Branch",
-  avatar: "https://placekitten.com/g/200/200",
-  linkedin: "nicholasbranch",
-  notes: "Some notes",
-  favorite: true,
-};
+// const contact = {
+//   first: "Nicholas",
+//   last: "Branch",
+//   avatar: "https://placekitten.com/g/200/200",
+//   linkedin: "nicholasbranch",
+//   notes: "Some notes",
+//   favorite: true,
+// };
 
 const Contact = () => {
   const { contact } = useLoaderData();
@@ -53,7 +53,7 @@ const Contact = () => {
               </>
             ) : (
               <i>No Name</i>
-            )}{" "}
+            )}{' '}
             <Favorite contact={contact} />
           </h1>
 
@@ -82,7 +82,7 @@ const Contact = () => {
               onSubmit={(event) => {
                 if (
                   !window.confirm(
-                    "Please confirm you want to delete this record."
+                    'Please confirm you want to delete this record.',
                   )
                 ) {
                   event.preventDefault();
@@ -111,14 +111,14 @@ const Favorite = ({ contact }) => {
     <Form method="post">
       <button
         className={`btn-favorite ${
-          favorite ? "text-yellow-400" : "text-gray-400"
+          favorite ? 'text-yellow-400' : 'text-gray-400'
         }`}
         name="favorite"
-        value={favorite ? "false" : "true"}
-        aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+        value={favorite ? 'false' : 'true'}
+        aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
         onClick={toggleFavorite}
       >
-        {favorite ? "★" : "☆"}
+        {favorite ? '★' : '☆'}
       </button>
     </Form>
   );
