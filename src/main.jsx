@@ -4,13 +4,15 @@ import App from './App.jsx';
 import {
   About,
   Contact,
+  contactAction,
   contactLoader,
+  ContactwID,
+  editAction,
   EditContact,
   Error,
   Intro,
   Portfolio,
-  rootAction,
-  rootLoader,
+  singleContactLoader,
 } from 'routes';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -35,21 +37,23 @@ const router = createBrowserRouter([
         element: <Portfolio />,
       },
       {
-        path: 'contacts',
+        path: 'contact',
         element: <Contact />,
-        loader: rootLoader,
-        action: rootAction,
-      },
-      {
-        path: 'contacts/:id',
-        element: <Contact />,
+        action: contactAction,
         loader: contactLoader,
-        action: rootAction,
-      },
-      {
-        path: 'contacts/:id/edit',
-        element: <EditContact />,
-        loader: contactLoader,
+        children: [
+          {
+            path: '/contact/:contactId',
+            element: <ContactwID />,
+            loader: singleContactLoader,
+          },
+          {
+            path: '/contact/:contactId/edit',
+            element: <EditContact />,
+            loader: singleContactLoader,
+            action: editAction,
+          },
+        ],
       },
     ],
   },

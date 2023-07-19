@@ -18,7 +18,7 @@ const Button = ({
 
   return (
     <button
-      className={`py-2 px-4 rounded mb-4 ${buttonStyle} ${
+      className={`py-[7px] px-4 rounded mb-4 ${buttonStyle} ${
         disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
       } shadow-lg`}
       onClick={onClick}

@@ -1,9 +1,16 @@
 import React from 'react';
-import { Form, useLoaderData } from 'react-router-dom';
-import Sidebar from 'components/Sidebar';
+import { Form, redirect, useLoaderData } from 'react-router-dom';
 import Button from 'components/Button';
 import TextField from 'components/TextField';
 import TextArea from 'components/TextArea';
+import { updateContact } from '../helper/contacts';
+
+const editAction = async ({ request, params }) => {
+  const formData = await request.formData();
+  const updates = Object.fromEntries(formData);
+  await updateContact(params.contactId, updates);
+  return redirect(`/contact/${params.contactId}`);
+};
 
 const EditContact = () => {
   const { contact } = useLoaderData();
@@ -11,14 +18,12 @@ const EditContact = () => {
 
   return (
     <div className="flex flex-grow">
-      <Sidebar />
       <div className="flex flex-grow p-4">
         <Form method="post" id="contact-form" className="max-w-3xl">
           <div className="flex flex-grow flex-col">
             <label className="block font-semibold mb-2">Name</label>
             <div className="flex flex-grow gap-4">
               <TextField
-                disabled
                 placeholder="First"
                 name="first"
                 defaultValue={contact?.first}
@@ -60,4 +65,4 @@ const EditContact = () => {
   );
 };
 
-export default EditContact;
+export { EditContact as default, editAction };
