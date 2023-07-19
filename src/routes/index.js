@@ -5,8 +5,8 @@ export { default as Portfolio } from './Portfolio';
 export { default as EditContact, editAction } from './Edit';
 export {
   default as Contact,
-  loader as contactLoader,
-  action as contactAction,
+  contactLoader,
+  contactAction,
   singleContactLoader,
 } from './Contact';
 export { default as ContactwID } from './ContactwID';

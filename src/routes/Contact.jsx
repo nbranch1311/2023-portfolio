@@ -1,35 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import Sidebar from 'components/Sidebar';
-import Button from 'components/Button';
 import { createContact, getContacts } from '../helper/contacts';
 import { getContact } from '../helper/contacts';
 
-export const action = async () => {
+const contactAction = async () => {
   const contact = await createContact();
   return { contact };
 };
 
-export const loader = async () => {
-  console.log('Loading contacts...');
+const contactLoader = async () => {
   const contacts = await getContacts();
   return { contacts };
 };
 
-export const singleContactLoader = async ({ params }) => {
+const singleContactLoader = async ({ params }) => {
   const contact = await getContact(params.contactId);
   return { contact };
 };
-
-// const contact = {
-//   first: 'Nicholas',
-//   last: 'Branch',
-//   avatar: 'https://placekitten.com/g/200/200',
-//   linkedin: 'nicholasbranch',
-//   notes: 'Some notes',
-//   favorite: true,
-// };
 
 const Contact = () => {
   const { contacts } = useLoaderData();
@@ -44,30 +33,6 @@ const Contact = () => {
   );
 };
 
-const Favorite = ({ contact }) => {
-  const [favorite, setFavorite] = useState(contact?.favorite);
-
-  const toggleFavorite = () => {
-    setFavorite((prevFavorite) => !prevFavorite);
-  };
-
-  return (
-    <Form method="post">
-      <button
-        className={`btn-favorite ${
-          favorite ? 'text-yellow-400' : 'text-gray-400'
-        }`}
-        name="favorite"
-        value={favorite ? 'false' : 'true'}
-        aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
-        onClick={toggleFavorite}
-      >
-        {favorite ? '★' : '☆'}
-      </button>
-    </Form>
-  );
-};
-
 Contact.propTypes = {
   contact: PropTypes.shape({
     first: PropTypes.string.isRequired,
@@ -79,10 +44,9 @@ Contact.propTypes = {
   }),
 };
 
-Favorite.propTypes = {
-  contact: PropTypes.shape({
-    favorite: PropTypes.bool,
-  }),
+export {
+  Contact as default,
+  singleContactLoader,
+  contactLoader,
+  contactAction,
 };
-
-export { Contact as default, Favorite };

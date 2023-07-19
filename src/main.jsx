@@ -14,7 +14,6 @@ import {
   Portfolio,
   singleContactLoader,
 } from 'routes';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './main.css';
 

@@ -14,7 +14,6 @@ const editAction = async ({ request, params }) => {
 
 const EditContact = () => {
   const { contact } = useLoaderData();
-  console.log(contact);
 
   return (
     <div className="flex flex-grow">
