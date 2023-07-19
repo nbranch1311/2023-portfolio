@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const TextArea = ({
@@ -11,6 +11,13 @@ const TextArea = ({
   disabled = false,
   resize = 'both',
 }) => {
+  const [inputValue, setInputValue] = useState(value ?? defaultValue ?? '');
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    onChange?.(e);
+  };
+
   let resizeClass = '';
   switch (resize) {
     case 'vertical':
@@ -36,13 +43,12 @@ const TextArea = ({
       <div>
         <textarea
           name={name}
-          value={value}
-          defaultValue={defaultValue}
+          value={inputValue}
           rows={rows}
           className={`border border-gray-200 rounded px-2 py-1 w-full ${resizeClass} ${
             disabled ? 'bg-gray-200 cursor-not-allowed' : ''
           } ${!disabled ? 'shadow-md' : ''}`}
-          onChange={onChange}
+          onChange={handleChange}
           disabled={disabled}
           aria-disabled={disabled}
         />
