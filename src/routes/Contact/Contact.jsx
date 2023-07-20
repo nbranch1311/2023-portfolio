@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, redirect, useLoaderData } from 'react-router-dom';
 import Sidebar from 'components/Sidebar';
-import { createContact, getContacts } from '../helper/contacts';
-import { getContact } from '../helper/contacts';
+import { createContact, getContacts } from '../../helper/contacts';
+import { getContact } from '../../helper/contacts';
 
 const contactAction = async () => {
   const contact = await createContact();
-  return { contact };
+  return redirect(`/contact/${contact.id}/edit`);
 };
 
 const contactLoader = async () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Link } from 'react-router-dom';
+import { Form, NavLink } from 'react-router-dom';
 import Button from './Button';
 
 const Sidebar = ({ contacts }) => {
@@ -32,18 +32,28 @@ const Sidebar = ({ contacts }) => {
             <ul>
               {contacts.map((contact) => (
                 <li key={contact.id} className="mb-2">
-                  <Link to={`/contact/${contact.id}`} className="text-white">
-                    {contact.first || contact.last ? (
+                  <NavLink
+                    to={`/contact/${contact.id}`}
+                    className={({ isActive, isPending }) => {
+                      const activeStyling = isActive
+                        ? 'bg-teal-500'
+                        : isPending
+                        ? 'bg-indigo-600'
+                        : '';
+                      return `${activeStyling} text-white py-1 px-2 rounded transition-colors duration-400 hover:bg-gray-700`;
+                    }}
+                  >
+                    {contact?.first || contact?.last ? (
                       <>
                         {contact.first} {contact.last}
                       </>
                     ) : (
                       <i>No Name</i>
                     )}{' '}
-                    {contact.favorite && (
+                    {contact?.favorite && (
                       <span className="text-yellow-400">★</span>
                     )}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>

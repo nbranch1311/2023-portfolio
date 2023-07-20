@@ -5,6 +5,7 @@ import {
   About,
   Contact,
   contactAction,
+  ContactLanding,
   contactLoader,
   ContactwID,
   editAction,
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
         action: contactAction,
         loader: contactLoader,
         children: [
+          { index: true, element: <ContactLanding /> },
           {
             path: '/contact/:contactId',
             element: <ContactwID />,
