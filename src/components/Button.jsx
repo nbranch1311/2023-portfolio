@@ -20,7 +20,7 @@ const Button = ({
     <button
       className={`py-[7px] px-4 rounded mb-4 ${buttonStyle} ${
         disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-      } shadow-lg`}
+      } shadow`}
       onClick={onClick}
       type={type}
       disabled={disabled}

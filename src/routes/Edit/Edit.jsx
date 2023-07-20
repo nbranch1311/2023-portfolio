@@ -3,7 +3,7 @@ import { Form, redirect, useLoaderData } from 'react-router-dom';
 import Button from 'components/Button';
 import TextField from 'components/TextField';
 import TextArea from 'components/TextArea';
-import { updateContact } from '../helper/contacts';
+import { updateContact } from '../../helper/contacts';
 
 const editAction = async ({ request, params }) => {
   const formData = await request.formData();
@@ -14,7 +14,6 @@ const editAction = async ({ request, params }) => {
 
 const EditContact = () => {
   const { contact } = useLoaderData();
-  console.log(contact);
 
   return (
     <div className="flex flex-grow">

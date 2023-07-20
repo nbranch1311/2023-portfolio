@@ -2,33 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, useLoaderData } from 'react-router-dom';
 import Button from 'components/Button';
-import { createContact, getContacts } from '../helper/contacts';
-import { getContact } from '../helper/contacts';
-
-export const action = async () => {
-  const contact = await createContact();
-  return { contact };
-};
-
-export const loader = async () => {
-  console.log('Loading contacts...');
-  const contacts = await getContacts();
-  return { contacts };
-};
-
-export const singleContactLoader = async ({ params }) => {
-  const contact = await getContact(params.contactId);
-  return { contact };
-};
-
-// const contact = {
-//   first: 'Nicholas',
-//   last: 'Branch',
-//   avatar: 'https://placekitten.com/g/200/200',
-//   linkedin: 'nicholasbranch',
-//   notes: 'Some notes',
-//   favorite: true,
-// };
 
 const ContactwID = () => {
   const { contact } = useLoaderData();

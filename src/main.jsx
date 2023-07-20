@@ -5,6 +5,7 @@ import {
   About,
   Contact,
   contactAction,
+  ContactLanding,
   contactLoader,
   ContactwID,
   editAction,
@@ -14,7 +15,6 @@ import {
   Portfolio,
   singleContactLoader,
 } from 'routes';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './main.css';
 
@@ -42,6 +42,7 @@ const router = createBrowserRouter([
         action: contactAction,
         loader: contactLoader,
         children: [
+          { index: true, element: <ContactLanding /> },
           {
             path: '/contact/:contactId',
             element: <ContactwID />,
