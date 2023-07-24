@@ -8,6 +8,7 @@ import {
   ContactLanding,
   contactLoader,
   ContactwID,
+  deleteAction,
   editAction,
   EditContact,
   Error,
@@ -53,6 +54,13 @@ const router = createBrowserRouter([
             element: <EditContact />,
             loader: singleContactLoader,
             action: editAction,
+          },
+          {
+            path: '/contact/:contactId/delete',
+            action: deleteAction,
+            errorElement: (
+              <div>{'Something went wrong with deleting that contact.'}</div>
+            ),
           },
         ],
       },

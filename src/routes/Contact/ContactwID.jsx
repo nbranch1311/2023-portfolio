@@ -11,13 +11,13 @@ const ContactwID = () => {
       <div className="flex flex-col mt-10 ml-10 w-full">
         <div className="flex">
           <div
-            className={`w-[10rem] h-[10rem] rounded-md mr-4 ${
+            className={`w-[10rem] h-[10rem] rounded-2xl mr-4 ${
               contact?.avatar ? '' : 'bg-gray-200'
             }`}
           >
             {contact?.avatar ? (
               <img
-                className="w-full h-full object-cover object-center rounded-md"
+                className="w-full h-full object-cover object-center rounded-2xl"
                 src={contact?.avatar}
                 alt="Contact Avatar"
               />
@@ -63,7 +63,7 @@ const ContactwID = () => {
               </Form>
               <Form
                 method="post"
-                action="destroy"
+                action="delete"
                 onSubmit={(event) => {
                   if (
                     !window.confirm(

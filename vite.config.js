@@ -6,6 +6,7 @@ export default defineConfig({
     alias: {
       components: '/src/components',
       routes: '/src/routes',
+      helper: '/src/helper',
     },
   },
   server: {
