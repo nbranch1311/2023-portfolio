@@ -1,8 +1,7 @@
 import React from 'react';
 import { Form, redirect, useLoaderData } from 'react-router-dom';
-import Button from 'components/Button';
-import TextField from 'components/TextField';
-import TextArea from 'components/TextArea';
+import { Button } from 'components/Button';
+import { TextArea, TextField } from 'components/TextInput';
 import { updateContact } from 'helper/contacts';
 
 const editAction = async ({ request, params }) => {

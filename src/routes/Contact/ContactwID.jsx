@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, useLoaderData } from 'react-router-dom';
-import Button from 'components/Button';
+import { Button } from 'components/Button';
 
 const ContactwID = () => {
   const { contact } = useLoaderData();

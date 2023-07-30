@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
  * Also should name be just label
  * Should label be required?
  */
-const TextField = ({
+export const TextField = ({
   label,
   placeholder = '',
   name = '',
@@ -50,5 +50,3 @@ TextField.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
 };
-
-export default TextField;
