@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, NavLink } from 'react-router-dom';
-import Button from './Button';
+import { Button } from '../Button';
 
-const Sidebar = ({ contacts }) => {
+export const Sidebar = ({ contacts }) => {
   return (
     <aside className="w-64 bg-gray-800 text-white flex-none">
       <div className="flex flex-col p-4">
@@ -81,5 +81,3 @@ Sidebar.propTypes = {
     }),
   ),
 };
-
-export { Sidebar as default };

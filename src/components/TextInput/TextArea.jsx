@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const TextArea = ({
+export const TextArea = ({
   label,
   name,
   value = '',
@@ -67,5 +67,3 @@ TextArea.propTypes = {
   disabled: PropTypes.bool,
   resize: PropTypes.oneOf(['vertical', 'horizontal', 'both', 'none']),
 };
-
-export default TextArea;

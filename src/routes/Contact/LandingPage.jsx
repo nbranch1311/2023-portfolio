@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 const ContactLanding = () => (
   <div className="flex flex-grow">
     <div className="max-w-3xl p-6 bg-white rounded-lg shadow">
-      <h1 className="text-4xl font-bold mb-4">Keep A List of Contacts!</h1>
-      {/* <img
+      <h1 className="text-4xl font-bold mb-4">Keep A List of Contacts!</h1>/ */
+      {/** Still deciding how I want this page to look */
+      /* <img
         src={contactImage}
         alt="Contact Image"
         className="w-64 h-auto mb-6"

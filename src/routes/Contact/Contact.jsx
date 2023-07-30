@@ -6,7 +6,7 @@ import {
   useLoaderData,
   useNavigation,
 } from 'react-router-dom';
-import Sidebar from 'components/Sidebar';
+import { Sidebar } from 'components/Navigation';
 import { createContact, getContacts } from '../../helper/contacts';
 import { getContact } from '../../helper/contacts';
 

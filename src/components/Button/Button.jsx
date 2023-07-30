@@ -7,7 +7,7 @@ const variantStyles = {
   danger: 'bg-red-600 text-white hover:bg-red-700',
 };
 
-const Button = ({
+export const Button = ({
   children,
   onClick,
   type = 'button',
@@ -37,5 +37,3 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   variant: PropTypes.oneOf(['primary', 'secondary', 'danger']),
 };
-
-export default Button;
